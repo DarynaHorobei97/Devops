@@ -1,0 +1,188 @@
+Script started on 2024-11-30 13:52:03+00:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="163" LINES="21"]
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ nano /home/vagrant/monitor.sh
+[?2004l
+[?2004h[?1049h[22;0;0t[1;21r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[19;76H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 7.2                                                          /home/vagrant/monitor.sh                                                                   [1;162H(B[m
+[20d(B[0;7m^G(B[m Help[20;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[20;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[20;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous
+[21d(B[0;7m^X(B[m Exit[21;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[21;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[21;113H(B[0;7mM-6(B[m Copy[21;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next
+[2d[?12l[?25h[?25l[1;98H(B[0;7m*[162G(B[m
+[2d[36m#!/bin/bash
+[19d[39m(B[m[K[?12l[?25h[3d(B[0;1m[34mecho[39m(B[m (B[0;1m[33m"$(date)"[39m(B[m [32m>>[39m(B[m /home/vagrant/date_log.txt[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25hl.txt[?25l[?12l[?25ho.txt[?25l[?12l[?25hg.txt[?25l[?12l[?25hs.txt[?25l[?12l[?25ht.txt[?25l[?12l[?25ha.txt[?25l[?12l[?25hk.txt[?25l[?12l[?25hs.txt[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l[?12l[?25h.txt[K[?25l
+[19d(B[0;7mSave modified buffer?                                                                                                                                              [20;1H Y(B[m Yes[K
+[21d(B[0;7m N(B[m No  [21;18H(B[0;7mC(B[m Cancel[K[19;23H[?12l[?25h[?25l
+[20d(B[0;7m^G(B[m Help[20;41H(B[0;7mM-D(B[m DOS Format[20;81H(B[0;7mM-A(B[m Append[20;121H(B[0;7mM-B(B[m Backup File
+[21d(B[0;7m^C(B[m Cancel[17G         [21;41H(B[0;7mM-M(B[m Mac Format[21;81H(B[0;7mM-P(B[m Prepend[21;121H(B[0;7m^T(B[m Browse
+[19d(B[0;7mFile Name to Write: /home/vagrant/monitor.sh(B[m[?12l[?25h[?25l[19;74H[1K (B[0;7m[ Writing... ](B[m[K[1;98H(B[0;7m [162G(B[m[19;74H(B[0;7m[ Wrote 2 lines ](B[m
+[J[21d[?12l[?25h[21;1H[?1049l[23;0;0t
+[?1l>[?2004l[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ chmod +x /home/vagrant/monitor.sh
+[?2004l
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo nano /etc/systemd/system/monitor.service
+[?2004l
+[?2004h[?1049h[22;0;0t[1;21r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[19;76H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 7.2                                                    /etc/systemd/system/monitor.service                                                              [1;162H(B[m
+[20d(B[0;7m^G(B[m Help[20;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[20;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[20;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous
+[21d(B[0;7m^X(B[m Exit[21;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[21;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[21;113H(B[0;7mM-6(B[m Copy[21;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next
+[2d[?12l[?25h[?25l[1;103H(B[0;7m*[162G(B[m
+[2d(B[0;1m[32m[Unit]
+[3d[39m(B[mDescription=Monitor service to write date and time to file every minute
+[5d(B[0;1m[32m[Service]
+[6d[39m(B[mExecStart=/home/vagrant/monitor.sh
+[8d(B[0;1m[32m[Install]
+[19d[39m(B[m[K[9d[?12l[?25hWantedBy=multi-user.target[?25l
+[19d(B[0;7mSave modified buffer?                                                                                                                                              [20;1H Y(B[m Yes[K
+[21d(B[0;7m N(B[m No  [21;18H(B[0;7mC(B[m Cancel[K[19;23H[?12l[?25h[?25l
+[20d(B[0;7m^G(B[m Help[20;41H(B[0;7mM-D(B[m DOS Format[20;81H(B[0;7mM-A(B[m Append[20;121H(B[0;7mM-B(B[m Backup File
+[21d(B[0;7m^C(B[m Cancel[17G         [21;41H(B[0;7mM-M(B[m Mac Format[21;81H(B[0;7mM-P(B[m Prepend[21;121H(B[0;7m^T(B[m Browse
+[19d(B[0;7mFile Name to Write: /etc/systemd/system/monitor.service(B[m[?12l[?25h[?25l[19;74H[1K (B[0;7m[ Writing... ](B[m[K[1;103H(B[0;7m [162G(B[m[19;74H(B[0;7m[ Wrote 8 lines ](B[m
+[J[21d[?12l[?25h[21;1H[?1049l[23;0;0t
+[?1l>[?2004l[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo nano /etc/systemd/system/monitor.service
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[12Pchmod +x /home/vagrant/monitor.sh
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pnano[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l
+[?2004h[?1049h[22;0;0t[1;21r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[19;75H(B[0;7m[ Reading... ](B[m[19;74H(B[0;7m[ Read 2 lines ](B[m[H(B[0;7m  GNU nano 7.2                                                          /home/vagrant/monitor.sh                                                                   [1;162H(B[m
+[20d(B[0;7m^G(B[m Help[20;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[20;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[20;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous
+[21d(B[0;7m^X(B[m Exit[21;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[21;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[21;113H(B[0;7mM-6(B[m Copy[21;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next
+[2d[36m#!/bin/bash
+[3d(B[0;1m[34mecho[39m(B[m (B[0;1m[33m"$(date)"[39m(B[m [32m>>[39m(B[m /home/vagrant/logs.txt
+[A[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h [?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h [?25l[?12l[?25h[C[?25l[?12l[?25h[C[?25l[?12l[?25h [?25l
+[19d[K[?12l[?25h[3;20H[?25l[?12l[?25hh[?25l[?12l[?25ho[?25l[?12l[?25hm[?25l[?12l[?25he[?25l[?12l[?25h/[?25l[?12l[?25hv[?25l[?12l[?25ha[?25l[?12l[?25hg[?25l[?12l[?25hr[?25l[?12l[?25ha[?25l[?12l[?25hn[?25l[?12l[?25ht[?25l[?12l[?25h/[?25l[?12l[?25hl[?25l[?12l[?25ho[?25l[?12l[?25hg[?25l[?12l[?25hs[?25l[1;98H(B[0;7m*[162G(B[m[?12l[?25h[3;36H.txt[K[?25l[?12l[?25h.[?25l[?12l[?25ht[?25l[?12l[?25hx[?25l[?12l[?25ht[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h/[?25l[?12l[?25hm[?25l[?12l[?25ho[?25l[?12l[?25hn[?25l[?12l[?25hi[?25l[?12l[?25ht[?25l[?12l[?25ho[?25l[?12l[?25hr[?25l[?12l[?25h.[?25l[?12l[?25hl[?25l[?12l[?25ho[?25l[?12l[?25hg[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25h[1P[?25l[?12l[?25hv/log/monitor.log[3;21H[?25l[?12l[?25ha/log/monitor.log[3;22H[?25l[?12l[?25hr/log/monitor.log[3;23H[?25l
+[19d(B[0;7mSave modified buffer?                                                                                                                                              [20;1H Y(B[m Yes[K
+[21d(B[0;7m N(B[m No  [21;18H(B[0;7mC(B[m Cancel[K[19;23H[?12l[?25h[?25l
+[20d(B[0;7m^G(B[m Help[20;41H(B[0;7mM-D(B[m DOS Format[20;81H(B[0;7mM-A(B[m Append[20;121H(B[0;7mM-B(B[m Backup File
+[21d(B[0;7m^C(B[m Cancel[17G         [21;41H(B[0;7mM-M(B[m Mac Format[21;81H(B[0;7mM-P(B[m Prepend[21;121H(B[0;7m^T(B[m Browse
+[19d(B[0;7mFile Name to Write: /home/vagrant/monitor.sh(B[m[?12l[?25h[?25l[19;74H[1K (B[0;7m[ Writing... ](B[m[K[1;98H(B[0;7m [162G(B[m[19;74H(B[0;7m[ Wrote 2 lines ](B[m
+[J[21d[?12l[?25h[21;1H[?1049l[23;0;0t
+[?1l>[?2004l[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ chmod +x /home/vagrant/monitor.sh
+[?2004l
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo nano /etc/systemd/system/monitor.service
+[?2004l
+[?2004h[?1049h[22;0;0t[1;21r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[19;75H(B[0;7m[ Reading... ](B[m[19;74H(B[0;7m[ Read 8 lines ](B[m[H(B[0;7m  GNU nano 7.2                                                    /etc/systemd/system/monitor.service                                                              [1;162H(B[m
+[20d(B[0;7m^G(B[m Help[20;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[20;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[20;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous
+[21d(B[0;7m^X(B[m Exit[21;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[21;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[21;113H(B[0;7mM-6(B[m Copy[21;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next
+[2d(B[0;1m[32m[Unit]
+[3d[39m(B[mDescription=Monitor service to write date and time to file every minute
+[5d(B[0;1m[32m[Service]
+[6d[39m(B[mExecStart=/home/vagrant/monitor.sh
+[8d(B[0;1m[32m[Install]
+[9d[39m(B[mWantedBy=multi-user.target
+[2d[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[4d[?25l[1;103H(B[0;7m*[162G(B[m[?12l[?25h
+[4dA[?25l[?12l[?25hf[?25l[?12l[?25ht[?25l[?12l[?25he[?25l[?12l[?25hr[?25l[?12l[?25h=[?25l[?12l[?25hn[?25l[?12l[?25he[?25l[?12l[?25ht[?25l[?12l[?25hw[?25l[?12l[?25ho[?25l[?12l[?25hr[?25l[?12l[?25hk[?25l[?12l[?25h.[?25l[?12l[?25ht[?25l[?12l[?25ha[?25l[?12l[?25hr[?25l
+[19d[K[?12l[?25h[4;18Hg[?25l[?12l[?25he[?25l[?12l[?25ht[?25l7[5;19r8
+[5dM[1;21r[5;1H[?12l[?25h[?25l[?12l[?25h[6d[?25l[?12l[?25h[7d[?25l[?12l[?25h[8d[?25l[?12l[?25hE[?25l[?12l[?25hx[?25l[?12l[?25he[?25l[?12l[?25hc[?25l[?12l[?25hR[?25l[?12l[?25he[?25l[?12l[?25hl[?25l[?12l[?25ho[?25l[?12l[?25ha[?25l[?12l[?25hd[?25l[?12l[?25h=[?25l[?12l[?25h/[?25l[?12l[?25hb[?25l[?12l[?25hi[?25l[?12l[?25hn[?25l[?12l[?25h/[?25l[?12l[?25hk[?25l[?12l[?25hi[?25l[?12l[?25hl[?25l[?12l[?25hl[?25l[?12l[?25h [?25l[?12l[?25h-[?25l[?12l[?25hH[?25l[?12l[?25hU[?25l[?12l[?25hP[?25l[?12l[?25h [?25l[?12l[?25h$[?25l[?12l[?25hM[?25l[?12l[?25hA[?25l[?12l[?25hI[?25l[?12l[?25hM[?25l[?12l[?25hP[?25l[?12l[?25hI[?25l[?12l[?25hO[?25l7[9;19r8
+[9dM[1;21r[9;1H[?12l[?25h[?25l[?12l[?25hR[?25l[?12l[?25he[?25l[?12l[?25hs[?25l[?12l[?25ht[?25l[?12l[?25ha[?25l[?12l[?25hr[?25l[?12l[?25ht[?25l[?12l[?25hS[?25l[?12l[?25he[?25l[?12l[?25hc[?25l[?12l[?25h=[?25l[?12l[?25h4[?25l[?12l[?25h [?25l[?12l[?25h5[?25l7[10;19r8
+[10dM[1;21r[10;1H[?12l[?25h[?25l[?12l[?25hS[?25l[?12l[?25ht[?25l[?12l[?25ha[?25l[?12l[?25hr[?25l[?12l[?25ht[?25l[?12l[?25hL[?25l[?12l[?25hi[?25l[?12l[?25hm[?25l[?12l[?25hi[?25l[?12l[?25ht[?25l[?12l[?25hI[?25l[?12l[?25hn[?25l[?12l[?25ht[?25l[?12l[?25he[?25l[?12l[?25hr[?25l[?12l[?25hv[?25l[?12l[?25ha[?25l[?12l[?25hl[?25l[?12l[?25h=[?25l[?12l[?25h6[?25l[?12l[?25h0[?25l7[11;19r8
+[11dM[1;21r[11;1H[?12l[?25h[?25l[?12l[?25hS[?25l[?12l[?25ht[?25l[?12l[?25ha[?25l[?12l[?25hr[?25l[?12l[?25ht[?25l[?12l[?25hL[?25l[?12l[?25hi[?25l[?12l[?25hm[?25l[?12l[?25hi[?25l[?12l[?25ht[?25l[?12l[?25hB[?25l[?12l[?25hu[?25l[?12l[?25hr[?25l[?12l[?25hs[?25l[?12l[?25ht[?25l[?12l[?25h=[?25l[?12l[?25h5[?25l7[12;19r8
+[12dM[1;21r[12;1H[?12l[?25h[?25l[19;70H(B[0;1m[37m[41m[ To suspend, type ^T^Z ][39;49m(B[m[?12l[?25h
+[12d[?25l[19d(B[0;7mSave modified buffer?                                                                                                                                              [20;1H Y(B[m Yes[K
+[21d(B[0;7m N(B[m No  [21;18H(B[0;7mC(B[m Cancel[K[19;23H[?12l[?25h[?25l
+[20d(B[0;7m^G(B[m Help[20;41H(B[0;7mM-D(B[m DOS Format[20;81H(B[0;7mM-A(B[m Append[20;121H(B[0;7mM-B(B[m Backup File
+[21d(B[0;7m^C(B[m Cancel[17G         [21;41H(B[0;7mM-M(B[m Mac Format[21;81H(B[0;7mM-P(B[m Prepend[21;121H(B[0;7m^T(B[m Browse
+[19d(B[0;7mFile Name to Write: /etc/systemd/system/monitor.service(B[m[?12l[?25h[?25l[19;74H[1K (B[0;7m[ Writing... ](B[m[K[1;103H(B[0;7m [162G(B[m[19;73H(B[0;7m[ Wrote 13 lines ](B[m
+[J[21d[?12l[?25h[21;1H[?1049l[23;0;0t
+[?1l>[?2004l[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo nano /etc/systemd/system/monitor.service
+[?2004l
+[?2004h[?1049h[22;0;0t[1;21r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[19;75H(B[0;7m[ Reading... ](B[m[19;74H(B[0;7m[ Read 13 lines ](B[m[H(B[0;7m  GNU nano 7.2                                                    /etc/systemd/system/monitor.service                                                              [1;162H(B[m
+[20d(B[0;7m^G(B[m Help[20;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[20;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[20;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous
+[21d(B[0;7m^X(B[m Exit[21;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[21;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[21;113H(B[0;7mM-6(B[m Copy[21;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next
+[2d(B[0;1m[32m[Unit]
+[3d[39m(B[mDescription=Monitor service to write date and time to file every minute
+[4dAfter=network.target
+[6d(B[0;1m[32m[Service]
+[7d[39m(B[mExecStart=/home/vagrant/monitor.sh
+[8dExecReload=/bin/kill -HUP $MAIMPIO
+[9dRestartSec=5
+[10dStartLimitInterval=60
+[11dStartLimitBurst=5
+[13d(B[0;1m[32m[Install]
+[14d[39m(B[mWantedBy=multi-user.target
+[2d[?12l[?25h[?25l[?12l[?25h[3d[?25l[?12l[?25h[4d[?25l[?12l[?25h[5d[?25l[?12l[?25h[6d[?25l[?12l[?25h[7d[?25l[?12l[?25h[8d[?25l[?12l[?25h[9d[?25l[?12l[?25h[10d[?25l[?12l[?25h[11d[?25l[?12l[?25h[12d[?25l[?12l[?25h[A[?25l[?12l[?25hS[?25l[?12l[?25ht[?25l[?12l[?25ha[?25l[?12l[?25hr[?25l[?12l[?25ht[?25l[?12l[?25hL[?25l[?12l[?25hi[?25l[?12l[?25hm[?25l
+[19d[K[?12l[?25h[11;10H[?25l[?12l[?25ht[?25l[?12l[?25hB[?25l[?12l[?25hu[?25l[?12l[?25hr[?25l[?12l[?25hs[?25l[?12l[?25ht[?25l[?12l[?25h=[?25l[?12l[?25h5[?25l[?12l[?25h
+[12d[?25l[?12l[?25h[11;18H[?25l[1;103H(B[0;7m*[162G(B[m[?12l[?25h[11;18H\[?25l[?12l[?25h\[?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h [?25l[?12l[?25h[K[?25l[11;19r[19;1H
+[1;21r[10;22H[?12l[?25h[?25l
+[19d(B[0;7mSave modified buffer?                                                                                                                                              [20;1H Y(B[m Yes[K
+[21d(B[0;7m N(B[m No  [21;18H(B[0;7mC(B[m Cancel[K[19;23H[?12l[?25h[?25l
+[20d(B[0;7m^G(B[m Help[20;41H(B[0;7mM-D(B[m DOS Format[20;81H(B[0;7mM-A(B[m Append[20;121H(B[0;7mM-B(B[m Backup File
+[21d(B[0;7m^C(B[m Cancel[17G         [21;41H(B[0;7mM-M(B[m Mac Format[21;81H(B[0;7mM-P(B[m Prepend[21;121H(B[0;7m^T(B[m Browse
+[19d(B[0;7mFile Name to Write: /etc/systemd/system/monitor.service(B[m[?12l[?25h[?25l[19;74H[1K (B[0;7m[ Writing... ](B[m[K[1;103H(B[0;7m [162G(B[m[19;73H(B[0;7m[ Wrote 12 lines ](B[m
+[J[21d[?12l[?25h[21;1H[?1049l[23;0;0t
+[?1l>[?2004l[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo nano /etc/systemd/system/monitor.timer
+[?2004l
+[?2004h[?1049h[22;0;0t[1;21r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[19;76H(B[0;7m[ New File ](B[m[H(B[0;7m  GNU nano 7.2                                                     /etc/systemd/system/monitor.timer                                                               [1;162H(B[m
+[20d(B[0;7m^G(B[m Help[20;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[20;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[20;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous
+[21d(B[0;7m^X(B[m Exit[21;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[21;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[21;113H(B[0;7mM-6(B[m Copy[21;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next
+[2d[?12l[?25h[?25l[1;102H(B[0;7m*[162G(B[m
+[2d(B[0;1m[32m[Unit]
+[3d[39m(B[mDescription=Run monitor.service every minute
+[5d(B[0;1m[32m[Timer]
+[6d[39m(B[mOnCalendar=*:0/1
+[7dUnit=monitor.service
+[9d(B[0;1m[32m[Install]
+[19d[39m(B[m[K[10d[?12l[?25hWantedBy=timers.target[?25l
+[19d(B[0;7mSave modified buffer?                                                                                                                                              [20;1H Y(B[m Yes[K
+[21d(B[0;7m N(B[m No  [21;18H(B[0;7mC(B[m Cancel[K[19;23H[?12l[?25h[?25l
+[20d(B[0;7m^G(B[m Help[20;41H(B[0;7mM-D(B[m DOS Format[20;81H(B[0;7mM-A(B[m Append[20;121H(B[0;7mM-B(B[m Backup File
+[21d(B[0;7m^C(B[m Cancel[17G         [21;41H(B[0;7mM-M(B[m Mac Format[21;81H(B[0;7mM-P(B[m Prepend[21;121H(B[0;7m^T(B[m Browse
+[19d(B[0;7mFile Name to Write: /etc/systemd/system/monitor.timer(B[m[?12l[?25h[?25l[19;74H[1K (B[0;7m[ Writing... ](B[m[K[1;102H(B[0;7m [162G(B[m[19;74H(B[0;7m[ Wrote 9 lines ](B[m
+[J[21d[?12l[?25h[21;1H[?1049l[23;0;0t
+[?1l>[?2004l[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo systemctl daemon-reload
+[?2004l
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo systemctl enable monitor.timer
+[?2004l
+Created symlink /etc/systemd/system/timers.target.wants/monitor.timer → /etc/systemd/system/monitor.timer.
+
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo systemctl start monitor.timer
+[?2004l
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo systemctl status monitor.timer
+[?2004l
+[?1h=
+[0;1;32m●[0m monitor.timer - Run monitor.service every minute[m
+     Loaded: loaded (]8;;file://public-server/etc/systemd/system/monitor.timer/etc/systemd/system/monitor.timer]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)[m
+     Active: [0;1;32mactive (waiting)[0m since Sat 2024-11-30 14:03:35 UTC; 5s ago[m
+    Trigger: Sat 2024-11-30 14:04:00 UTC; 19s left[m
+   Triggers: ● monitor.service[m
+[m
+Nov 30 14:03:35 public-server systemd[1]: Started monitor.timer - Run monitor.service every minute.[m
+
+[K[?1l>[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ sudo systemctl status monitor.service
+[?2004l
+[?1h=
+○ monitor.service - Monitor service to write date and time to file every minute[m
+     Loaded: loaded (]8;;file://public-server/etc/systemd/system/monitor.service/etc/systemd/system/monitor.service]8;;; [0;1;38;5;185mdisabled[0m; preset: [0;1;32menabled[0m)[m
+     Active: inactive (dead)[m
+TriggeredBy: [0;1;32m●[0m monitor.timer[m
+
+[K[?1l>[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ cat /home/vagrant/date_log.txt[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kvar/log/monitior[K[K[Kor.log
+[?2004l
+cat: /var/log/monitor.log: No such file or directory
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ cat /var/log/monitor.logsudo systemctl status monitor.service[2Ptimer[1Prt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1@enable[C[C[C[C[C[C[C[C[C[C[C[C[C[C[7Pdaemon-reloadnano /etc/systemd/system/monitor.timerservice
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[12Pchmod +x /home/vagrant/monitor.sh
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pnano[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Csudo nano /etc/systemd/system/monitor.service
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[16Pnano /home/vagrant/monitor.sh
+[?2004l
+[?2004h[?1049h[22;0;0t[1;21r(B[m[4l[?7h[39;49m[?1h=[?1h=[?25l[39;49m(B[m[H[2J[19;75H(B[0;7m[ Reading... ](B[m[19;74H(B[0;7m[ Read 2 lines ](B[m[H(B[0;7m  GNU nano 7.2                                                          /home/vagrant/monitor.sh                                                                   [1;162H(B[m
+[20d(B[0;7m^G(B[m Help[20;17H(B[0;7m^O(B[m Write Out    (B[0;7m^W(B[m Where Is     (B[0;7m^K(B[m Cut[20;65H(B[0;7m^T(B[m Execute[81G(B[0;7m^C(B[m Location     (B[0;7mM-U(B[m Undo[20;113H(B[0;7mM-A(B[m Set Mark    (B[0;7mM-](B[m To Bracket  (B[0;7mM-Q(B[m Previous
+[21d(B[0;7m^X(B[m Exit[21;17H(B[0;7m^R(B[m Read File    (B[0;7m^\(B[m Replace[49G(B[0;7m^U(B[m Paste[21;65H(B[0;7m^J(B[m Justify[81G(B[0;7m^/(B[m Go To Line   (B[0;7mM-E(B[m Redo[21;113H(B[0;7mM-6(B[m Copy[21;129H(B[0;7m^Q(B[m Where Was    (B[0;7mM-W(B[m Next
+[2d[36m#!/bin/bash
+[3d(B[0;1m[34mecho[39m(B[m (B[0;1m[33m"$(date)"[39m(B[m [32m>>[39m(B[m /var/log/monitor.log
+[A[?12l[?25h[?25l[19d[J[21d[?12l[?25h[21;1H[?1049l[23;0;0t
+[?1l>[?2004l[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ nano /home/vagrant/monitor.sh
+[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5Pcat /var/log/monitor.log
+[?2004l
+Sat Nov 30 02:04:43 PM UTC 2024
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ cat /var/log/monitor.log
+[?2004l
+Sat Nov 30 02:04:43 PM UTC 2024
+Sat Nov 30 02:05:43 PM UTC 2024
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ cat /var/log/monitor.log
+[?2004l
+Sat Nov 30 02:04:43 PM UTC 2024
+Sat Nov 30 02:05:43 PM UTC 2024
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ cat /var/log/monitor.log
+[?2004l
+Sat Nov 30 02:04:43 PM UTC 2024
+Sat Nov 30 02:05:43 PM UTC 2024
+Sat Nov 30 02:06:43 PM UTC 2024
+[?2004h]0;vagrant@public-server: ~[01;32mvagrant@public-server[00m:[01;34m~[00m$ exit
+[?2004l
+exit
+
+Script done on 2024-11-30 14:07:11+00:00 [COMMAND_EXIT_CODE="0"]
